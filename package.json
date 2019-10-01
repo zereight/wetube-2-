@@ -4,11 +4,15 @@
     "description": "This is a practice of wetube clone",
     "main": "index.js",
     "scripts": {
-        "start": "node index.js"
+        "start": "nodemon --exec babel-node index.js"
     },
     "author": "KJH",
     "license": "ISC",
     "dependencies": {
-        "express": "^4.17.1"
+        "@babel/core": "^7.6.2",
+        "@babel/node": "^7.6.2",
+        "@babel/preset-env": "^7.6.2",
+        "express": "^4.17.1",
+        "nodemon": "^1.19.3"
     }
 }
