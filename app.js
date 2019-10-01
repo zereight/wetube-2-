@@ -3,13 +3,11 @@ import express from "express";
 import morgan from "morgan";
 import helmet from "helmet";
 import cookieParser from "cookie-parser";
-import bodyParser from "bodyParser";
+import bodyParser from "body-parser";
+import userRouter from "./router";
 
 const app = express();
 
-const handleListening = () => {
-    console.log(`Listening port: 4000`);
-};
 const handleHome = (req, res) => {
     console.log('This is homepage.');
     res.send("This is Homepage.");
@@ -38,5 +36,6 @@ app.use(betweenMiddleware);
 app.get('/', betweenHome, handleHome);
 app.get('/profile', handleProfile);
 
+app.use("/user", userRouter);
 
-app.listen(4000, handleListening);
+export default app;
