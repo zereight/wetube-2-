@@ -12,8 +12,17 @@ const handleProfile = (req, res) => {
     console.log('This is profilepage.');
     res.send("This is Profilepage.");
 };
+const betweenHome = (req, res, next) => { // middleware
+    console.log("Between");
+    next();
+};
+const betweenMiddleware = (req, res, next) => { // middleware
+    console.log("im mdware");
+    next();
+};
 
-app.get('/', handleHome);
+app.use(betweenMiddleware);
+app.get('/', betweenHome, handleHome);
 app.get('/profile', handleProfile);
 
 
