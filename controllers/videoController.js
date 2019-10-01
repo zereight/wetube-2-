@@ -1,15 +1,15 @@
 export const home = (req, res) => {
-    res.send("home");
+    res.render("home");
 };
 export const login = (req, res) => {
-    res.send("login");
+    res.render("login");
 };
 export const logout = (req, res) => {
     res.send("logout");
 };
 export const search = (req, res) => {
-    res.send("search");
+    res.render("search");
 };
 export const join = (req, res) => {
-    res.send("join");
+    res.render("join");
 };
