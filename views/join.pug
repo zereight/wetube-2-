@@ -1,4 +1,12 @@
 extends layouts/main
 
 block content
-    p join
+    .form__container
+        form( action='/login', method='post' )
+            input( type='text', placeholder='Full Name', name='name' )
+            input( type='text', placeholder='Email', name='email' )
+            input( type='password', placeholder='Password', name='password' )
+            input( type='password', placeholder='Verify Password', name='password2' )
+            input( type='submit', value='Join Now' )
+        include partials/socialLogin
+
