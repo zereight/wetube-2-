@@ -17,7 +17,7 @@ app.set("view engine", "pug");
 app.use(helmet());
 app.use(morgan("dev"));
 
-app.use(bodyParser.json());
+app.use(bodyParser.json()); // body Parser가 없다면 form에서 post로 전송한 body정보를 볼 수가 없음.
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 

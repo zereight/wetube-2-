@@ -13,7 +13,7 @@ export const search = (req, res) => {
     // const searchingBy = req.query.term;
     const { query : { term:searchingBy } } = req; // ES6
     // console.log(term);
-    res.render("search", {pageTitle: "Search", searchingBy: searchingBy});
+    res.render("search", {pageTitle: "Search", searchingBy: searchingBy, videos});
 };
 export const editVideo = (req, res) => {
     res.render("editVideo", {pageTitle: "EditVideo"});
