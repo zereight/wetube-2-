@@ -8,7 +8,10 @@ export const videoDetail = (req, res) => {
     res.send("videoDetail", {pageTitle: "VideoDetail"});
 };
 export const search = (req, res) => {
-    res.render("search", {pageTitle: "Search"});
+    // const searchingBy = req.query.term;
+    const { query : { term } } = req; // ES6
+    console.log(term);
+    res.render("search", {pageTitle: "Search", searchingBy: searchingBy});
 };
 export const editVideo = (req, res) => {
     res.render("editVideo", {pageTitle: "EditVideo"});
