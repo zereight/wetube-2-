@@ -7,6 +7,6 @@ const userRouter = express.Router();
 
 userRouter.get(routes.editProfile, editProfile);
 userRouter.get(routes.changePassword, changePassword);
-userRouter.get(routes.userDetail, userDetail); // :id는 마지막에 해줘야 안겹침.
+userRouter.get(routes.userDetail(), userDetail); // :id는 마지막에 해줘야 안겹침.
 
 export default userRouter;
