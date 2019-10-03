@@ -3,11 +3,14 @@ import {videos} from "../db";
 export const home = (req, res) => {
     res.render("home", {pageTitle: "Home", videos:videos});
 };
-export const upload = (req, res) => {
+export const getUpload = (req, res) => {
+    res.render("upload", {pageTitle: "Upload"});
+};
+export const postUpload = (req, res) => {
     res.render("upload", {pageTitle: "Upload"});
 };
 export const videoDetail = (req, res) => {
-    res.send("videoDetail", {pageTitle: "VideoDetail"});
+    res.render("videoDetail", {pageTitle: "VideoDetail"});
 };
 export const search = (req, res) => {
     // const searchingBy = req.query.term;
