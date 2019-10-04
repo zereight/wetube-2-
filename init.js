@@ -4,4 +4,4 @@ const handleListening = () => {
     console.log(`✅  Listening port: 4000`);
 };
 
-app.listen(4000, handleListening);
+app.listen(process.env.PORT, handleListening);

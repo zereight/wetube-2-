@@ -10,11 +10,15 @@ mongo
 */
 
 import mongoose from "mongoose";
+import dotenv from "dotenv";
+dotenv.config();
 
 // port정보는 mongod로 확인가능 , mongodb://주소:포트/db이름
-mongoose.connect( "mongodb://localhost:27017/we-tube" , {
+mongoose.connect( 
+  process.env.MONGO_URL, {
   useNewUrlParser: true,
-  useFindAndModify: false
+  useFindAndModify: false,
+  useUnifiedTopology: true,
 });
 
 const db = mongoose.connection;
@@ -22,4 +26,4 @@ const db = mongoose.connection;
 const handleOpen = () => {console.log("✅  Connection to DB");}
 const handleError = (error) => {console.log( `❌  Error on DB Connection ${error}` );}
 db.once("open", handleOpen)//한번만 실행
-db.error("error", handleError);
+db.on("error", handleError);
