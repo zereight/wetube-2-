@@ -14,6 +14,17 @@ const app = express();
 
 app.set("view engine", "pug");
 
+// 현재 multer로 인해 video가 uploads/video/asdadad12312 이렇게 저장되고있다.
+// 그래서 /uploads 로 이동하면 uploads diretory안으로 들어가게 해준다. 
+// when the user goes to /uploads/something.mp4 
+// try to find something.mp4 inside  the folder named upload
+// video 업로드하면, multer가 uploads/videos에 만들고, fileUrl을 uploads/videos로 해서 contoller로 보내고,
+// controller는 fileUrl을 uploads/videos어쩌구로 new Video.create하고
+// home화면으로 돌아오면, home controller가 Video의 모든 object찾고, home.pug로 보내고,
+// home.pug는 video.fileUrl를 video src로 설정하고, 주소로 href uploads/videos/~ 로 가는데,
+// express보고 /uploads로 가면 static("uploads")때문에 videos/~로 url이 이동하게됨.
+app.use("/uploads", express.static("uploads")); 
+
 app.use(helmet());
 app.use(morgan("dev"));
 

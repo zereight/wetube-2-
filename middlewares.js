@@ -1,7 +1,8 @@
 import routes from "./routes";
 import multer from "multer";
 
-const multerVideo = multer({dest: "videos/"}); // multer가 videos/라는 폴더에 바꾼거 기록할 것임.
+ // multer가 videos/라는 폴더에 바꾼거 기록할 것임.
+const multerVideo = multer({dest: "uploads/videos/"});
 
 export const localMiddleware = (req, res, next)=>{
     res.locals.siteName = "WeTube";
