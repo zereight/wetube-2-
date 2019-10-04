@@ -3,7 +3,12 @@ include mixins/videoBlock
 
 block content
     .search__header
-        h1 Searching By
+        h1 Searching By #{searchingBy}
     .search__videos
-        each video in videos
-            +videoBlock(video)
+        if videos.length === 0
+            h5 No Video File
+        else
+            each video in videos
+                +videoBlock(video)
+    
+        

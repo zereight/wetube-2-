@@ -5,7 +5,7 @@ import routes from "../routes";
 export const home = async (req, res) => {
     try{
         const videos = await Video.find({}).sort({_id: -1}); // find all the videos.
-        res.render("home", {pageTitle: "Home", videos:videos});
+        res.render("home", {pageTitle: "Home", videos});
     }
     catch(error){
         console.log(error);
@@ -23,8 +23,8 @@ export const postUpload = async (req, res) => {
     
     const newVideo = await Video.create({
         fileUrl: filePath,
-        title: title,
-        description: description
+        title,
+        description,
     });
     // console.log(newVideo);
     res.redirect(routes.videoDetail(newVideo.id));
@@ -42,11 +42,20 @@ export const videoDetail = async (req, res) => {
     }
     
 };
-export const search = (req, res) => {
+export const search = async (req, res) => {
     // const searchingBy = req.query.term;
     const { query : { term:searchingBy } } = req; // ES6
     // console.log(term);
-    res.render("search", {pageTitle: "Search", searchingBy: searchingBy, videos});
+    let videos = [];
+    try {
+        // searchingBy를 정규표현식 사용해서 속한거, 대소문자구별없이 다 찾음.
+        // options에 i는 insensitive로써 대소문자를 구별하지 않음을 의미
+        videos = await Video.find({title: {$regex: searchingBy, $options: "i"} });
+    } catch (error) {
+        console.log("error");
+
+    }
+    res.render("search", {pageTitle: "Search", searchingBy, videos});
 };
 
 export const getEditVideo = async (req, res) => {
@@ -70,7 +79,7 @@ export const postEditVideo = async (req, res) => {
     } = req;
     try{
         
-        await Video.findOneAndUpdate({ _id:id }, {title: title, description: description});
+        await Video.findOneAndUpdate({ _id:id }, {title, description});
         res.redirect(routes.videoDetail(id));
     }catch(error){
         console.log(error);
