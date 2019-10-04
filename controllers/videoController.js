@@ -31,8 +31,16 @@ export const postUpload = async (req, res) => {
 
 };
 
-export const videoDetail = (req, res) => {
-    res.render("videoDetail", {pageTitle: "VideoDetail"});
+export const videoDetail = async (req, res) => {
+    const {parms: {id}} = req;
+    try{
+        const video = Video.findById(id);
+        res.render("videoDetail", {pageTitle: "VideoDetail", video});
+    }catch(error){
+        console.log(error);
+        res.redirect(routes.home);
+    }
+    
 };
 export const search = (req, res) => {
     // const searchingBy = req.query.term;
