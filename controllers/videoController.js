@@ -1,4 +1,3 @@
-import {videos} from "../db";
 
 export const home = (req, res) => {
     res.render("home", {pageTitle: "Home", videos:videos});
@@ -7,7 +6,10 @@ export const getUpload = (req, res) => {
     res.render("upload", {pageTitle: "Upload"});
 };
 export const postUpload = (req, res) => {
-    res.render("upload", {pageTitle: "Upload"});
+    const { body: {file, title, description} } = req;
+
+
+
 };
 export const videoDetail = (req, res) => {
     res.render("videoDetail", {pageTitle: "VideoDetail"});
