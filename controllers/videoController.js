@@ -4,7 +4,7 @@ import routes from "../routes";
 
 export const home = async (req, res) => {
     try{
-        const videos = await Video.find({}); // find all the videos.
+        const videos = await Video.find({}).sort({_id: -1}); // find all the videos.
         res.render("home", {pageTitle: "Home", videos:videos});
     }
     catch(error){
