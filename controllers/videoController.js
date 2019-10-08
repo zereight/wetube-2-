@@ -25,7 +25,7 @@ export const postUpload = async (req, res) => {
         fileUrl: filePath,
         title,
         description,
-    }).save();
+    });//.save();
     // console.log(newVideo);
     res.redirect(routes.videoDetail(newVideo.id));
 

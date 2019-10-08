@@ -4,7 +4,8 @@
     "description": "This is a practice of wetube clone",
     "main": "init.js",
     "scripts": {
-        "start": "nodemon --exec babel-node init.js --delay 2"
+        "dev:server": "nodemon --exec babel-node init.js --delay 2",
+        "dev:assets": "webpack"
     },
     "author": "KJH",
     "license": "ISC",
@@ -25,6 +26,8 @@
         "morgan": "^1.9.1",
         "multer": "^1.4.2",
         "nodemon": "^1.19.3",
-        "pug": "^2.0.4"
+        "pug": "^2.0.4",
+        "webpack": "^4.41.0",
+        "webpack-cli": "^3.3.9"
     }
 }
