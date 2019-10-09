@@ -10,6 +10,7 @@ const OUTPUT_DIR = path.join(__dirname, "static");
 
 const MODE = process.env.WEBPACK_ENV;
 const ExtractCSS = require("extract-text-webpack-plugin");
+const autoprefixer = require("autoprefixer");
 
 const config= {
     entry: ENTRY_FILE,
@@ -23,7 +24,12 @@ const config= {
                         loader:"css-loader"
                     },
                     {
-                        loader: "postcss-loader"
+                        loader: "postcss-loader", // css 호환성 해결함.
+                        options: {
+                            plugin() {
+                                return [autoprefixer({browsers:"cover 99.5%"})];
+                            }
+                        }
                     },
                     {
                         loader:"sass-loader"
@@ -36,7 +42,8 @@ const config= {
     output: {
         path: OUTPUT_DIR,
         filename: "[name].js"
-    }
+    },
+    plugins: [new ExtractCSS("style.css")]
 };
 
 module.exports = config; // export defualt 의 옛날버젼
