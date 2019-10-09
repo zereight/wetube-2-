@@ -13,10 +13,18 @@ const ExtractCSS = require("extract-text-webpack-plugin");
 const autoprefixer = require("autoprefixer");
 
 const config= {
-    entry: ENTRY_FILE,
+    entry: ["@babel/polyfill",ENTRY_FILE], // polyfill은 webpack이 async인식할수있게해줌
     mode: MODE,
     module: {
         rules:[
+            {
+                test: /\.(js)$/,
+                use: [
+                    {
+                        loader: "babel-loader"
+                    }
+                ]
+            },
             {
                 test: /\.(scss)$/ ,
                 use: ExtractCSS.extract([
@@ -26,8 +34,8 @@ const config= {
                     {
                         loader: "postcss-loader", // css 호환성 해결함.
                         options: {
-                            plugin() {
-                                return [autoprefixer({browsers:"cover 99.5%"})];
+                            plugins() {
+                                return [autoprefixer({Browserslist:"cover 99.5%"})];
                             }
                         }
                     },

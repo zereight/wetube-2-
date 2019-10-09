@@ -24,6 +24,7 @@ app.set("view engine", "pug");
 // home.pug는 video.fileUrl를 video src로 설정하고, 주소로 href uploads/videos/~ 로 가는데,
 // express보고 /uploads로 가면 static("uploads")때문에 videos/~로 url이 이동하게됨.
 app.use("/uploads", express.static("uploads")); 
+app.use("/static", express.static("static")); 
 
 app.use(helmet());
 app.use(morgan("dev"));
