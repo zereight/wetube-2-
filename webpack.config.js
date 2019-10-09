@@ -8,8 +8,30 @@ const ENTRY_FILE = path.resolve(__dirname,"assets",'js','main.js' ); // __dirnam
 // 출력 경로
 const OUTPUT_DIR = path.join(__dirname, "static");
 
+const MODE = process.env.WEBPACK_ENV;
+const ExtractCSS = require("extract-text-webpack-plugin");
+
 const config= {
     entry: ENTRY_FILE,
+    mode: MODE,
+    module: {
+        rules:[
+            {
+                test: /\.(scss)$/ ,
+                use: ExtractCSS.extract([
+                    {
+                        loader:"css-loader"
+                    },
+                    {
+                        loader: "postcss-loader"
+                    },
+                    {
+                        loader:"sass-loader"
+                    }
+                ])
+            }
+        ]
+    },
     // output은 object형이여야함
     output: {
         path: OUTPUT_DIR,

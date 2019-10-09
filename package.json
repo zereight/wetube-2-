@@ -5,7 +5,8 @@
     "main": "init.js",
     "scripts": {
         "dev:server": "nodemon --exec babel-node init.js --delay 2",
-        "dev:assets": "webpack"
+        "dev:assets": "WEBPACK_ENV=development webpack",
+        "build:assets": "WEBPACK_ENV=production webpack"
     },
     "author": "KJH",
     "license": "ISC",
@@ -21,6 +22,7 @@
         "eslint-config-prettier": "^6.3.0",
         "eslint-plugin-import": "^2.18.2",
         "express": "^4.17.1",
+        "extract-text-webpack-plugin": "^4.0.0-beta.0",
         "helmet": "^3.21.1",
         "mongoose": "^5.7.3",
         "morgan": "^1.9.1",
