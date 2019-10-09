@@ -1,3 +1,6 @@
+import dotenv from "dotenv";
+dotenv.config();
+
 import express from "express";
 // const express = require("express");
 import morgan from "morgan";
@@ -11,7 +14,7 @@ import routes from "./routes";
 import { localMiddleware } from "./middlewares";
 import passport from "passport";
 import "./passport";
-
+import session from "express-session";
 const app = express();
 
 app.set("view engine", "pug");
@@ -34,7 +37,19 @@ app.use(morgan("dev"));
 app.use(bodyParser.json()); // body Parser가 없다면 form에서 post로 전송한 body정보를 볼 수가 없음.
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// app.use(session({
+//     secret: process.env.COOKIE_SECRET,  // randomekygen.com
+//     resave: true,
+//     saveUninitialized: false
+// }));
 app.use(cookieParser());
+app.use(
+    session({
+      secret: process.env.COOKIE_SECRET,
+      resave: true,
+      saveUninitialized: false
+    })
+  );
 app.use(passport.initialize());
 app.use(passport.session());
 
