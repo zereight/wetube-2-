@@ -15,7 +15,13 @@ import { localMiddleware } from "./middlewares";
 import passport from "passport";
 import "./passport";
 import session from "express-session";
+import MongoStore from "connect-mongo";
+import mongoose from "mongoose";
+
+
 const app = express();
+
+const CookieStore = MongoStore(session);
 
 app.set("view engine", "pug");
 
@@ -47,7 +53,8 @@ app.use(
     session({
       secret: process.env.COOKIE_SECRET,
       resave: true,
-      saveUninitialized: false
+      saveUninitialized: false,
+      store: new CookieStore({mongooseConnection: mongoose.connection})
     })
   );
 app.use(passport.initialize());
