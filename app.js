@@ -9,6 +9,8 @@ import videoRouter from "./routers/videoRouter";
 import globalRouter from "./routers/globalRouter";
 import routes from "./routes";
 import { localMiddleware } from "./middlewares";
+import passport from "passport";
+import "./passport";
 
 const app = express();
 
@@ -31,7 +33,10 @@ app.use(morgan("dev"));
 
 app.use(bodyParser.json()); // body Parser가 없다면 form에서 post로 전송한 body정보를 볼 수가 없음.
 app.use(bodyParser.urlencoded({ extended: true }));
+
 app.use(cookieParser());
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use(localMiddleware);
 
