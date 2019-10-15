@@ -148,38 +148,75 @@ body {
 
 main {
   width: 100%;
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
   min-height: 70vh; }
 
 button,
-input {
+input:not([type="file"]),
+textarea,
+.fileUpload {
   padding: 7px 10px;
   width: 100%;
+  border: none;
   border-radius: 5px;
   font-size: 14px;
   color: #444444;
-  font-weight: 600; }
+  font-weight: 600;
+  background-color: white;
+  max-width: 320px;
+  resize: none; }
   button::-webkit-input-placeholder,
-  input::-webkit-input-placeholder {
+  input:not([type="file"])::-webkit-input-placeholder,
+  textarea::-webkit-input-placeholder,
+  .fileUpload::-webkit-input-placeholder {
     font-weight: 300;
     color: rgba(0, 0, 0, 0.7); }
   button::-moz-placeholder,
-  input::-moz-placeholder {
+  input:not([type="file"])::-moz-placeholder,
+  textarea::-moz-placeholder,
+  .fileUpload::-moz-placeholder {
     font-weight: 300;
     color: rgba(0, 0, 0, 0.7); }
   button:-ms-input-placeholder,
-  input:-ms-input-placeholder {
+  input:not([type="file"]):-ms-input-placeholder,
+  textarea:-ms-input-placeholder,
+  .fileUpload:-ms-input-placeholder {
     font-weight: 300;
     color: rgba(0, 0, 0, 0.7); }
   button::-ms-input-placeholder,
-  input::-ms-input-placeholder {
+  input:not([type="file"])::-ms-input-placeholder,
+  textarea::-ms-input-placeholder,
+  .fileUpload::-ms-input-placeholder {
     font-weight: 300;
     color: rgba(0, 0, 0, 0.7); }
   button::placeholder,
-  input::placeholder {
+  input:not([type="file"])::placeholder,
+  textarea::placeholder,
+  .fileUpload::placeholder {
     font-weight: 300;
     color: rgba(0, 0, 0, 0.7); }
+  button button,
+  input:not([type="file"]) button,
+  textarea button,
+  .fileUpload button {
+    border: none;
+    background-color: #3498db;
+    color: white; }
+  button button.delete,
+  input:not([type="file"]) button.delete,
+  textarea button.delete,
+  .fileUpload button.delete {
+    background-color: #bb2f2a; }
+  button button,
+  button input[type="submit"],
+  input:not([type="file"]) button,
+  input:not([type="file"]) input[type="submit"],
+  textarea button,
+  textarea input[type="submit"],
+  .fileUpload button,
+  .fileUpload input[type="submit"] {
+    cursor: pointer; }
 
 .header {
   background-color: #ea232c;
@@ -215,7 +252,8 @@ input {
         border-radius: 5px;
         font-size: 14px;
         color: #444444;
-        font-weight: 600; }
+        font-weight: 600;
+        max-width: none; }
         .header .header__wrapper .header__column form input::-webkit-input-placeholder {
           font-weight: 300;
           color: rgba(0, 0, 0, 0.7); }
@@ -258,17 +296,28 @@ input {
     width: 100%;
     max-width: 320px;
     margin-bottom: 50px; }
-    .form-container form input {
+    .form-container form input:not([type="file"]),
+    .form-container form .fileUpload {
       display: block;
       width: 100%;
       padding-top: 10px;
       padding-bottom: 10px;
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); }
-      .form-container form input:not(:last-child) {
+      .form-container form input:not([type="file"]):not(:last-child),
+      .form-container form .fileUpload:not(:last-child) {
         margin-bottom: 25px; }
+    .form-container form textarea {
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+      margin-bottom: 25px; }
     .form-container form input[type="submit"] {
       background-color: #3498db;
       color: white; }
+  .form-container a {
+    max-width: 320px;
+    width: 100%; }
+  .form-container .fileUpload label {
+    font-weight: 300;
+    margin-right: 10px; }
 
 .social-login {
   display: flex;
@@ -292,3 +341,84 @@ input {
   .social-login .social-login--facebook {
     background-color: #3a5998;
     color: white; }
+
+.videoBlock video {
+  margin-bottom: 10px;
+  max-width: 100%; }
+
+.videoBlock .videoBlock__title {
+  font-size: 18px;
+  font-weight: 300;
+  margin-bottom: 10px; }
+
+.home-videos {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(150px, 1fr));
+  grid-gap: 30px; }
+  .home-videos .videoBlock:first-child,
+  .home-videos .videoBlock:nth-child(2) {
+    grid-column: span 3; }
+  .home-videos .videoBlock:nth-child(3),
+  .home-videos .videoBlock:nth-child(4),
+  .home-videos .videoBlock:nth-child(5) {
+    grid-column: span 2; }
+
+.video-detail__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+  .video-detail__container .video__info {
+    width: 100%;
+    max-width: 850px;
+    margin-top: 25px; }
+    .video-detail__container .video__info button {
+      width: 100px;
+      margin-bottom: 25px; }
+    .video-detail__container .video__info .video__title,
+    .video-detail__container .video__info .video__views,
+    .video-detail__container .video__info .video__description {
+      display: block;
+      margin-bottom: 15px; }
+    .video-detail__container .video__info .video__title {
+      font-size: 22px;
+      font-weight: 300; }
+    .video-detail__container .video__info .video__views {
+      font-size: 14px; }
+    .video-detail__container .video__info .video__description {
+      font-size: 16px; }
+  .video-detail__container .video__comments {
+    margin-top: 25px; }
+    .video-detail__container .video__comments .video__comment-number {
+      font-size: 18px; }
+
+.videoPlayer {
+  position: relative; }
+  .videoPlayer:hover .videoPlayer__controls {
+    opacity: 1; }
+  .videoPlayer video {
+    max-width: 100%; }
+  .videoPlayer .videoPlayer__controls {
+    opacity: 0;
+    transition: opacity 0.4s linear;
+    color: white;
+    position: absolute;
+    z-index: 9;
+    bottom: 5px;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    font-size: 16px; }
+    .videoPlayer .videoPlayer__controls .videoPlayer__column:first-child {
+      display: flex;
+      align-items: center; }
+      .videoPlayer .videoPlayer__controls .videoPlayer__column:first-child span:first-child {
+        margin-right: 10px; }
+    .videoPlayer .videoPlayer__controls .videoPlayer__column:last-child {
+      justify-self: end; }
+    .videoPlayer .videoPlayer__controls .videoPlayer__column:nth-child(2) {
+      justify-self: center; }
+    .videoPlayer .videoPlayer__controls i {
+      font-size: 25px;
+      cursor: pointer; }
