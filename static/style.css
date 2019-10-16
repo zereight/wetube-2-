@@ -166,28 +166,16 @@ textarea,
   background-color: white;
   max-width: 320px;
   resize: none; }
-  button::-webkit-input-placeholder,
-  input:not([type="file"])::-webkit-input-placeholder,
-  textarea::-webkit-input-placeholder,
-  .fileUpload::-webkit-input-placeholder {
+  button::-webkit-input-placeholder, input:not([type="file"])::-webkit-input-placeholder, textarea::-webkit-input-placeholder, .fileUpload::-webkit-input-placeholder {
     font-weight: 300;
     color: rgba(0, 0, 0, 0.7); }
-  button::-moz-placeholder,
-  input:not([type="file"])::-moz-placeholder,
-  textarea::-moz-placeholder,
-  .fileUpload::-moz-placeholder {
+  button::-moz-placeholder, input:not([type="file"])::-moz-placeholder, textarea::-moz-placeholder, .fileUpload::-moz-placeholder {
     font-weight: 300;
     color: rgba(0, 0, 0, 0.7); }
-  button:-ms-input-placeholder,
-  input:not([type="file"]):-ms-input-placeholder,
-  textarea:-ms-input-placeholder,
-  .fileUpload:-ms-input-placeholder {
+  button:-ms-input-placeholder, input:not([type="file"]):-ms-input-placeholder, textarea:-ms-input-placeholder, .fileUpload:-ms-input-placeholder {
     font-weight: 300;
     color: rgba(0, 0, 0, 0.7); }
-  button::-ms-input-placeholder,
-  input:not([type="file"])::-ms-input-placeholder,
-  textarea::-ms-input-placeholder,
-  .fileUpload::-ms-input-placeholder {
+  button::-ms-input-placeholder, input:not([type="file"])::-ms-input-placeholder, textarea::-ms-input-placeholder, .fileUpload::-ms-input-placeholder {
     font-weight: 300;
     color: rgba(0, 0, 0, 0.7); }
   button::placeholder,
@@ -445,3 +433,12 @@ textarea,
     .videoPlayer .videoPlayer__controls i {
       font-size: 25px;
       cursor: pointer; }
+
+.record-container {
+  width: 100%;
+  max-width: 320px;
+  margin-bottom: 50px; }
+  .record-container video {
+    background-color: black;
+    width: 100%;
+    margin-bottom: 20px; }

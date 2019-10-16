@@ -11,6 +11,7 @@ mongo
 
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+
 dotenv.config();
 
 // port정보는 mongod로 확인가능 , mongodb://주소:포트/db이름
