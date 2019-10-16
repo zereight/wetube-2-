@@ -33,6 +33,22 @@ function handleVolumeClick(){
     }
 }
 
+function goFullScreen() {
+  if (videoContainer.requestFullscreen) {
+      videoContainer.requestFullscreen();
+    } else if (videoContainer.mozRequestFullScreen) {
+      videoContainer.mozRequestFullScreen();
+    } else if (videoContainer.webkitRequestFullscreen) {
+      videoContainer.webkitRequestFullscreen();
+    } else if (videoContainer.msRequestFullscreen) {
+      videoContainer.msRequestFullscreen();
+    }
+  fullScrnBtn.innerHTML = "<i class='fas fa-compress'></i>";
+  fullScrnBtn.removeEventListener("click", goFullScreen);
+  fullScrnBtn.addEventListener("click", exitFullScreen);
+}
+
+
 function exitFullScreen() {
     fullScrnBtn.innerHTML = "<i class='fas fa-expand'></i>";
     fullScrnBtn.addEventListener("click", goFullScreen);
@@ -47,20 +63,6 @@ function exitFullScreen() {
       }
 }
 
-function goFullScreen() {
-    if (videoContainer.requestFullscreen) {
-        videoContainer.requestFullscreen();
-      } else if (videoContainer.mozRequestFullScreen) {
-        videoContainer.mozRequestFullScreen();
-      } else if (videoContainer.webkitRequestFullscreen) {
-        videoContainer.webkitRequestFullscreen();
-      } else if (videoContainer.msRequestFullscreen) {
-        videoContainer.msRequestFullscreen();
-      }
-    fullScrnBtn.innerHTML = "<i class='fas fa-compress'></i>";
-    fullScrnBtn.removeEventListener("click", goFullScreen);
-    fullScrnBtn.addEventListener("click", exitFullScreen);
-}
 
 const formatDate = seconds => {
     const secondsNumber = parseInt(seconds, 10);
