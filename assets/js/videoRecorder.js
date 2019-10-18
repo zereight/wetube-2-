@@ -1,3 +1,4 @@
+// 동영상이 안나오면 window media player문제일 수 있으니, VLC플레이어 같은거 다운받아서 실행하기
 const recorderContainer = document.getElementById("jsRecordContainer");
 const recordBtn = document.getElementById("jsRecordBtn");
 const videoPreview = document.getElementById("jsVideoPreview");
