@@ -4,6 +4,6 @@ import { postRegisterView } from "../controllers/videoController";
 
 const apiRouter = express.Router();
 
-apiRouter.get(routes.registerView, postRegisterView); // get으로해서 방문하면 DB조작할것임.
+apiRouter.post(routes.registerView, postRegisterView); 
 
 export default apiRouter;
